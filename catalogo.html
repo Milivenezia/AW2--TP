@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>PokeAesthetic Shop — Catálogo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="catalogo">
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-pill">PA</span>
+      <div class="logo-text">
+        <h1>PokeAesthetic Shop</h1>
+        <p>Colecciones de Pokémon con estilo</p>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="catalogo.html" class="active">Catálogo</a>
+      <a href="carrito.html">Carrito (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <h2>Catálogo de Pokémon</h2>
+      <p>Elegí tus Pokémon favoritos según su estética, tipo y estilo. Perfecto para coleccionistas como Ciro.</p>
+    </section>
+
+    <section class="filters">
+      <div class="search-box">
+        <label for="searchInput">Buscar por nombre</label>
+        <input type="text" id="searchInput" placeholder="Ej: pikachu, bulbasaur..." />
+      </div>
+      <button id="searchButton" class="btn-primary">Buscar</button>
+      <button id="resetButton" class="btn-secondary">Ver todos</button>
+    </section>
+
+    <section id="feedback" class="feedback hidden"></section>
+
+    <section id="product-list" class="product-grid">
+        
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Venezia Milagros - Aplicaciones Web I - PokeAesthetic</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
