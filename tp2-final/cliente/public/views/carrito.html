@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>PokeAesthetic Shop — Carrito y Pago</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body data-page="carrito">
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-pill">PA</span>
+      <div class="logo-text">
+        <h1>PokeAesthetic Shop</h1>
+        <p>Colecciones de Pokémon con estilo</p>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="/catalogo">Catálogo</a>
+      <a href="/carrito" class="active">Carrito (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <main class="container two-columns">
+    <section class="cart-column">
+      <h2>Tu carrito</h2>
+      <div id="cart-empty" class="feedback hidden">
+        Todavía no agregaste Pokémon al carrito.
+      </div>
+      <ul id="cart-items" class="cart-list"></ul>
+      <div id="cart-summary" class="cart-summary hidden">
+        <p>Total de productos: <span id="cart-quantity">0</span></p>
+        <p>Total a pagar: <span id="cart-total">$0</span></p>
+        <button id="clear-cart" class="btn-secondary">Vaciar carrito</button>
+      </div>
+    </section>
+
+    <section class="checkout-column">
+      <h2>Pasarela de pago</h2>
+      <p>Completá tus datos para simular la compra.</p>
+
+      <form id="checkout-form" action="confirmacionCompra.html" method="GET" class="checkout-form">
+        <div class="form-group">
+          <label for="nombreCompleto">Nombre completo</label>
+          <input type="text" id="nombreCompleto" name="nombreCompleto" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" name="direccion" required />
+        </div>
+
+        <div class="form-group">
+          <label for="metodoPago">Método de pago</label>
+          <select id="metodoPago" name="metodoPago" required>
+            <option value="">Seleccionar...</option>
+            <option value="debito">Tarjeta de débito</option>
+            <option value="credito">Tarjeta de crédito</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="numeroTarjeta">Número de tarjeta</label>
+          <input type="text" id="numeroTarjeta" name="numeroTarjeta" required minlength="12" maxlength="19" />
+        </div>
+
+        <input type="hidden" id="montoTotal" name="montoTotal" value="0" />
+
+        <button type="submit" class="btn-primary btn-full">Finalizar compra</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Venezia Milagros - Aplicaciones Web II - PokeAesthetic Shop</small>
+  </footer>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
