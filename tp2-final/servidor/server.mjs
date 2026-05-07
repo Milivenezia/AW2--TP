@@ -8,40 +8,71 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-/* =============================
-   MIDDLEWARE
-============================= */
 app.use(express.static(path.resolve(__dirname, '..', 'cliente', 'public')));
 
-/* =============================
-   RUTAS
-============================= */
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'cliente', 'public', 'index.html'));
+    res.sendFile(
+        path.resolve(__dirname, '..', 'cliente', 'public', 'index.html')
+    );
 });
 
 app.get('/catalogo', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'cliente', 'public', 'views', 'catalogo.html'));
+    res.sendFile(
+        path.resolve(__dirname, '..', 'cliente', 'public', 'views', 'catalogo.html')
+    );
 });
 
 app.get('/carrito', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'cliente', 'public', 'views', 'carrito.html'));
+    res.sendFile(
+        path.resolve(__dirname, '..', 'cliente', 'public', 'views', 'carrito.html')
+    );
 });
 
 app.get('/confirmacion', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'cliente', 'public', 'views', 'confirmacionCompra.html'));
+    res.sendFile(
+        path.resolve(__dirname, '..', 'cliente', 'public', 'views', 'confirmacionCompra.html')
+    );
+});
+
+
+app.get('/productos', async (req, res) => {
+
+    try {
+
+        const respuesta = await fetch(
+            'https://69f8b14af7044aa0103e538f.mockapi.io/Productos'
+        );
+
+        const productos = await respuesta.json();
+
+        res.json(productos);
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+            error: 'Error al obtener productos'
+        });
+
+    }
+
 });
 
 
 app.use((req, res) => {
+
     res.status(404).send(`
         <h1>404 - Página no encontrada</h1>
         <p>La ruta solicitada no existe.</p>
         <a href="/">Volver al inicio</a>
     `);
+
 });
 
 
 app.listen(PUERTO, () => {
+
     console.log(`Servidor corriendo en http://localhost:${PUERTO}`);
+
 });

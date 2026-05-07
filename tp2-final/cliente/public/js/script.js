@@ -1,5 +1,4 @@
-
-const API_URL = 'https://69f8b14af7044aa0103e538f.mockapi.io/Productos';
+const API_URL = 'http://localhost:3000/productos';
 
 const STORAGE_KEY = 'pokeAestheticCart';
 
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
   else if (page === 'confirmacion') initConfirmationPage();
 });
 
-// ── Carrito (localStorage)
 function getCart() {
   return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 }
@@ -28,8 +26,7 @@ function updateCartCount() {
   const total = getCart().reduce((acc, item) => acc + item.quantity, 0);
   span.textContent = total;
 }
-
-// ── Catálogo 
+ 
 async function initCatalogPage() {
   const productList = document.getElementById('product-list');
   const feedback = document.getElementById('feedback');
@@ -113,7 +110,6 @@ function renderProductos(productos, container) {
   });
 }
 
-// ── Agregar al carrito 
 function addToCart(producto) {
   const cart = getCart();
   const existing = cart.find(item => item.id === producto.id);
@@ -125,7 +121,6 @@ function addToCart(producto) {
   saveCart(cart);
 }
 
-// ── Página carrito 
 function initCartPage() {
   const cartList = document.getElementById('cart-items');
   const cartEmpty = document.getElementById('cart-empty');
@@ -194,7 +189,6 @@ function initCartPage() {
   renderCart();
 }
 
-// ── Confirmación 
 function initConfirmationPage() {
   const box = document.getElementById('confirmation-box');
   const params = new URLSearchParams(window.location.search);
